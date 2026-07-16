@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA // US Real-Time Timezone Dashboard</title>
+  <!-- Google Fonts: Outfit for sleek modern UI, Share Tech Mono for digital clocks -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <!-- Lucide Icons for beautiful icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-deepspace">
+  <div class="background-radial-glow"></div>
+  
+  <header class="app-header">
+    <div class="header-logo">
+      <div class="logo-orb"></div>
+      <h1 class="header-title">AURA <span>Time System</span></h1>
+    </div>
+    
+    <div class="header-controls">
+      <!-- 12H / 24H Toggle Switch -->
+      <div class="toggle-container">
+        <span class="toggle-label">12H</span>
+        <label class="switch">
+          <input type="checkbox" id="time-format-toggle">
+          <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">24H</span>
+      </div>
+
+      <!-- Live / Scrub Indicator -->
+      <div class="status-badge live" id="live-indicator">
+        <span class="pulse-dot"></span>
+        <span id="live-status-text">LIVE</span>
+      </div>
+
+      <!-- Theme Selector -->
+      <div class="theme-selector-wrapper">
+        <label for="theme-select" class="theme-select-label"><i data-lucide="palette"></i></label>
+        <select id="theme-select" class="theme-dropdown">
+          <option value="deepspace">Deep Space</option>
+          <option value="nordiclight">Nordic Light</option>
+          <option value="cyberpunk">Cyberpunk Neon</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-grid">
+    <!-- Eastern Time Card -->
+    <div class="timezone-card" id="card-eastern" data-timezone="America/New_York">
+      <div class="card-glow"></div>
+      <div class="card-header">
+        <div class="zone-info">
+          <h2>Eastern Time</h2>
+          <span class="zone-abbr">EDT</span>
+        </div>
+        <div class="zone-offset-badge">UTC-4</div>
+      </div>
+      
+      <!-- Analog Clock Face -->
+      <div class="analog-clock-container">
+        <div class="analog-clock">
+          <div class="clock-face">
+            <div class="tick tick-12"></div>
+            <div class="tick tick-3"></div>
+            <div class="tick tick-6"></div>
+            <div class="tick tick-9"></div>
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+            <div class="center-pin"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Digital Display -->
+      <div class="digital-clock-container">
+        <span class="digital-time">12:00:00</span>
+        <span class="digital-ampm">PM</span>
+      </div>
+
+      <!-- Date and Phase details -->
+      <div class="card-footer">
+        <div class="date-display">Tuesday, Jun 2</div>
+        <div class="phase-badge day">
+          <i data-lucide="sun"></i>
+          <span>Daylight</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Central Time Card -->
+    <div class="timezone-card" id="card-central" data-timezone="America/Chicago">
+      <div class="card-glow"></div>
+      <div class="card-header">
+        <div class="zone-info">
+          <h2>Central Time</h2>
+          <span class="zone-abbr">CDT</span>
+        </div>
+        <div class="zone-offset-badge">UTC-5</div>
+      </div>
+      
+      <div class="analog-clock-container">
+        <div class="analog-clock">
+          <div class="clock-face">
+            <div class="tick tick-12"></div>
+            <div class="tick tick-3"></div>
+            <div class="tick tick-6"></div>
+            <div class="tick tick-9"></div>
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+            <div class="center-pin"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="digital-clock-container">
+        <span class="digital-time">11:00:00</span>
+        <span class="digital-ampm">AM</span>
+      </div>
+
+      <div class="card-footer">
+        <div class="date-display">Tuesday, Jun 2</div>
+        <div class="phase-badge day">
+          <i data-lucide="sun"></i>
+          <span>Daylight</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mountain Time Card -->
+    <div class="timezone-card" id="card-mountain" data-timezone="America/Denver">
+      <div class="card-glow"></div>
+      <div class="card-header">
+        <div class="zone-info">
+          <h2>Mountain Time</h2>
+          <span class="zone-abbr">MDT</span>
+        </div>
+        <div class="zone-offset-badge">UTC-6</div>
+      </div>
+      
+      <div class="analog-clock-container">
+        <div class="analog-clock">
+          <div class="clock-face">
+            <div class="tick tick-12"></div>
+            <div class="tick tick-3"></div>
+            <div class="tick tick-6"></div>
+            <div class="tick tick-9"></div>
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+            <div class="center-pin"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="digital-clock-container">
+        <span class="digital-time">10:00:00</span>
+        <span class="digital-ampm">AM</span>
+      </div>
+
+      <div class="card-footer">
+        <div class="date-display">Tuesday, Jun 2</div>
+        <div class="phase-badge day">
+          <i data-lucide="sun"></i>
+          <span>Daylight</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pacific Time Card -->
+    <div class="timezone-card" id="card-pacific" data-timezone="America/Los_Angeles">
+      <div class="card-glow"></div>
+      <div class="card-header">
+        <div class="zone-info">
+          <h2>Pacific Time</h2>
+          <span class="zone-abbr">PDT</span>
+        </div>
+        <div class="zone-offset-badge">UTC-7</div>
+      </div>
+      
+      <div class="analog-clock-container">
+        <div class="analog-clock">
+          <div class="clock-face">
+            <div class="tick tick-12"></div>
+            <div class="tick tick-3"></div>
+            <div class="tick tick-6"></div>
+            <div class="tick tick-9"></div>
+            <div class="hand hour-hand"></div>
+            <div class="hand minute-hand"></div>
+            <div class="hand second-hand"></div>
+            <div class="center-pin"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="digital-clock-container">
+        <span class="digital-time">09:00:00</span>
+        <span class="digital-ampm">AM</span>
+      </div>
+
+      <div class="card-footer">
+        <div class="date-display">Tuesday, Jun 2</div>
+        <div class="phase-badge day">
+          <i data-lucide="sun"></i>
+          <span>Daylight</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Interactive Meeting Planner Area -->
+  <section class="planner-section">
+    <div class="planner-card">
+      <div class="planner-header">
+        <div class="planner-title">
+          <i data-lucide="calendar-range"></i>
+          <div>
+            <h3>Meeting Planner & Time Scrubber</h3>
+            <p>Drag the slider to preview times across all timezones. Click "Reset" to return to live ticking.</p>
+          </div>
+        </div>
+        <button id="reset-time-btn" class="btn btn-secondary disabled">
+          <i data-lucide="refresh-cw"></i>
+          Reset to Live Time
+        </button>
+      </div>
+
+      <div class="slider-wrapper">
+        <div class="slider-labels">
+          <span>12 AM</span>
+          <span>4 AM</span>
+          <span>8 AM</span>
+          <span>12 PM</span>
+          <span>4 PM</span>
+          <span>8 PM</span>
+          <span>11 PM</span>
+        </div>
+        <input type="range" id="time-scrubber" min="0" max="1439" value="720" class="time-slider">
+        <div class="current-scrub-label" id="scrub-display-val">12:00 PM (Local Standard Time)</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="app-footer">
+    <p>Aura Time System &copy; 2026. Made with precision and modern aesthetics.</p>
+  </footer>
+
+  <!-- Custom Logic JS -->
+  <script src="script.js"></script>
+</body>
+</html>
